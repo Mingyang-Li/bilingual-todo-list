@@ -1,24 +1,47 @@
-import React from 'react';
+/*
+https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_interactivity_events_state
+*/
+
+import React, { useState } from "react";
+import { nanoid } from "nanoid";
 import logo from './logo.svg';
 import './App.css';
+import Todo from "./components/Todo";
+import Form from "./components/Form";
+import FilterButton from "./components/FilterButton";
 
-function App() {
+function addTask(name) {
+  const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
+  setTasks([...tasks, newTask]);
+}
+
+function App(props) {
+  const [tasks, setTasks] = useState(props.tasks);
+  const taskList = tasks.map(task => (
+    <Todo
+      id={task.id}
+      name={task.name}
+      completed={task.completed}
+      key={task.id}
+    />
+  )
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="todoapp stack-large">
+      <Form addTask={addTask} />
+      <div className="filters btn-group stack-exception">
+        <FilterButton />
+        <FilterButton />
+        <FilterButton />
+      </div>
+      <h2 id="list-heading">3 tasks remaining</h2>
+      <ul
+        role="list"
+        className="todo-list stack-large stack-exception"
+        aria-labelledby="list-heading"
+      >
+        {taskList}
+      </ul>
     </div>
   );
 }
