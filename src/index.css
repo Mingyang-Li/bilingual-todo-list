@@ -303,3 +303,20 @@ body {
 .c-cb > input[type="checkbox"]:checked + label::after {
   opacity: 1;
 }
+
+.translate-btn{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px black solid;
+  padding: 15px 30px 15px 30px;
+  font-weight: 500;
+}
+
+.translate-btn:hover{
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}

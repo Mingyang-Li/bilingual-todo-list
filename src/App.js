@@ -44,15 +44,48 @@ function App(props) {
     />
   )
   );
+
+  const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   const tasksNoun = taskList.length > 1 ? 'tasks' : 'task';
-  const headingText = `${taskList.length} ${tasksNoun} remaining`;
+  var headingText = `${taskList.length} ${tasksNoun} remaining`;
+  var chnText = `还有${taskList.length}件事没做`;
+
+
+  function translate(e) {
+    var TranslateBtnText = e.innerHTML;
+    TranslateBtnText = '点击查看英文';
+    e.target.innerHTML = TranslateBtnText;
+
+    var headline = document.getElementById('label__lg');
+    headline.innerHTML = "今天干啥？"
+
+    var addBtn = document.getElementById('btn__primary');
+    addBtn.innerHTML = "添加"
+
+    var deleteBtn = document.getElementById('delete-btn');
+    deleteBtn.innerHTML = '删除';
+
+    var editBtn = document.getElementById('edit-btn');
+    editBtn.innerHTML = '修改';
+
+    var ShowBtn = document.getElementById('visible-span');
+    ShowBtn.innerHTML = '显示全部';
+
+    var description = document.getElementById('list-heading');
+    description.innerHTML = chnText;
+
+  }
+
+
   return (
     <div className="todoapp stack-large">
       <Form addTask={addTask} />
+
+      <button className='translate-btn' onClick={translate} id='translate-btn'>Translate to Chinese</button>
+
       <div className="filters btn-group stack-exception">
         <FilterButton />
-        <FilterButton />
-        <FilterButton />
+
       </div>
       <h2 id="list-heading">{headingText}</h2>
       <ul

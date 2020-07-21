@@ -1,4 +1,5 @@
 import React from "react";
+import App from "../App";
 
 export default function Todo(props) {
     return (
@@ -10,11 +11,13 @@ export default function Todo(props) {
                 </label>
             </div>
             <div className="btn-group">
-                <button type="button" className="btn">
-                    Edit <span className="visually-hidden">{props.name}</span>
+                <span className="visually-hidden">{props.name}</span>
+                <button type="button" className="btn" id="edit-btn">
+                    Edit
                 </button>
-                <button type="button" className="btn btn__danger" onClick={() => props.deleteTask(props.id)}>
-                    Delete <span className="visually-hidden">{props.name}</span>
+                <span className="visually-hidden">{props.name}</span>
+                <button type="button" className="btn btn__danger" id="delete-btn" onClick={() => props.deleteTask(props.id)}>
+                    Delete
                 </button>
             </div>
         </li>
