@@ -1,3 +1,5 @@
+Demo: https://bilingual-todo-list.netlify.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 The bilingual todo-list allows you to make todo-list in both English and Mandarin. 
